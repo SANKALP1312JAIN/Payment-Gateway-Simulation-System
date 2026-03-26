@@ -4,11 +4,11 @@ import { AlertCircle, CheckCircle2, Loader2, RotateCcw, Clock, MoreHorizontal } 
 
 const StatusBadge = ({ status }) => {
     const styles = {
-        CREATED: 'bg-gray-500/10 text-gray-400 border-gray-500/20',
-        PROCESSING: 'bg-primary/10 text-primary border-primary/20 animate-pulse',
-        SUCCESS: 'bg-success/10 text-success border-success/20',
-        FAILED: 'bg-danger/10 text-danger border-danger/20',
-        RETRYING: 'bg-warning/10 text-warning border-warning/20',
+        CREATED: 'bg-gray-100 text-gray-600 border-gray-200',
+        PROCESSING: 'bg-blue-50 text-blue-600 border-blue-100 animate-pulse',
+        SUCCESS: 'bg-successBg text-success border-green-200',
+        FAILED: 'bg-dangerBg text-danger border-red-200',
+        RETRYING: 'bg-warningBg text-warning border-yellow-200',
     };
 
     const icons = {
@@ -71,42 +71,42 @@ const TransactionList = () => {
     return (
         <div className="w-full">
             <div className="flex justify-between items-center mb-6">
-                <h2 className="text-xl font-semibold text-white">Recent Transactions</h2>
-                <span className="text-sm border border-surface bg-surface text-textMuted px-3 py-1 rounded-full">Live feed</span>
+                <h2 className="text-xl font-semibold text-textMain">Recent Transactions</h2>
+                <span className="text-sm border border-borderLight bg-gray-50 text-textMuted px-3 py-1 rounded-full shadow-sm">Live feed</span>
             </div>
 
-            <div className="overflow-x-auto rounded-xl border border-surface bg-black/50">
+            <div className="overflow-x-auto rounded-xl border border-borderLight bg-white shadow-sm">
                 <table className="w-full text-sm text-left relative">
-                    <thead className="text-xs text-textMuted uppercase bg-surface/50 border-b border-surface">
+                    <thead className="text-xs text-textMuted uppercase bg-gray-50 border-b border-borderLight">
                         <tr>
-                            <th className="px-6 py-4 font-medium">TxID / Date</th>
-                            <th className="px-6 py-4 font-medium">Amount</th>
-                            <th className="px-6 py-4 font-medium">Method</th>
-                            <th className="px-6 py-4 font-medium">Status</th>
-                            <th className="px-6 py-4 font-medium text-center">Retries</th>
-                            <th className="px-6 py-4 font-medium text-right">Actions</th>
+                            <th className="px-6 py-4 font-medium tracking-wider">TxID / Date</th>
+                            <th className="px-6 py-4 font-medium tracking-wider">Amount</th>
+                            <th className="px-6 py-4 font-medium tracking-wider">Method</th>
+                            <th className="px-6 py-4 font-medium tracking-wider">Status</th>
+                            <th className="px-6 py-4 font-medium text-center tracking-wider">Retries</th>
+                            <th className="px-6 py-4 font-medium text-right tracking-wider">Actions</th>
                         </tr>
                     </thead>
-                    <tbody className="divide-y divide-surface">
+                    <tbody className="divide-y divide-borderLight">
                         {transactions.map((tx) => (
-                            <tr key={tx._id} className="hover:bg-surface/30 transition-colors group">
+                            <tr key={tx._id} className="hover:bg-gray-50 transition-colors group">
                                 <td className="px-6 py-4">
-                                    <div className="font-mono text-xs text-gray-300 mb-1">{tx._id.slice(-8).toUpperCase()}</div>
+                                    <div className="font-mono text-xs text-textMain font-medium mb-1">{tx._id.slice(-8).toUpperCase()}</div>
                                     <div className="text-xs text-textMuted">{new Date(tx.createdAt).toLocaleTimeString()}</div>
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    <span className="font-medium text-white">${tx.amount.toFixed(2)}</span>
-                                    <span className="text-textMuted text-xs ml-1">{tx.currency}</span>
+                                    <span className="font-semibold text-textMain">${tx.amount.toFixed(2)}</span>
+                                    <span className="text-textMuted text-xs ml-1 font-medium">{tx.currency}</span>
                                 </td>
                                 <td className="px-6 py-4">
-                                    <span className="bg-surface text-gray-300 px-2 py-1 rounded-md text-xs font-medium border border-white/5">{tx.paymentMethod}</span>
+                                    <span className="bg-gray-100 text-gray-600 px-2.5 py-1 rounded-md text-xs font-semibold border border-gray-200">{tx.paymentMethod}</span>
                                 </td>
                                 <td className="px-6 py-4">
                                     <StatusBadge status={tx.status} />
                                 </td>
                                 <td className="px-6 py-4 text-center">
                                     <div className="flex justify-center items-center gap-1">
-                                        <span className="text-textMuted font-mono text-xs bg-surface/80 px-2 py-0.5 rounded border border-white/5">{tx.retryCount}/{tx.maxRetries}</span>
+                                        <span className="text-textMuted font-mono text-xs bg-gray-100 px-2 py-0.5 rounded border border-gray-200">{tx.retryCount}/{tx.maxRetries}</span>
                                     </div>
                                 </td>
                                 <td className="px-6 py-4 text-right">
@@ -114,13 +114,13 @@ const TransactionList = () => {
                                         <button
                                             onClick={() => handleRetry(tx._id)}
                                             disabled={retryingIds.has(tx._id)}
-                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-white bg-surface hover:bg-surface/80 border border-white/10 transition-colors disabled:opacity-50"
+                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg text-textMain bg-white hover:bg-gray-50 border border-borderLight shadow-sm transition-all disabled:opacity-50"
                                         >
                                             {retryingIds.has(tx._id) ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RotateCcw className="w-3.5 h-3.5" />}
                                             <span>Retry</span>
                                         </button>
                                     ) : (
-                                        <button className="p-1.5 text-textMuted border border-transparent rounded hover:border-surface hover:bg-surface disabled:opacity-50" disabled>
+                                        <button className="p-1.5 text-gray-400 border border-transparent rounded hover:border-borderLight hover:bg-gray-50 hover:text-textMain transition-colors disabled:opacity-50" disabled>
                                             <MoreHorizontal className="w-4 h-4" />
                                         </button>
                                     )}
@@ -137,6 +137,7 @@ const TransactionList = () => {
                 </table>
             </div>
         </div>
+
     );
 };
 

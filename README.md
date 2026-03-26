@@ -1,5 +1,7 @@
 # Payment Gateway Simulation System
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://payment-gateway-sankalp-jain.vercel.app/) [![GitHub Repo](https://img.shields.io/badge/GitHub-Repo-blue)](https://github.com/SANKALP1312JAIN/Payment-Gateway-Simulation-System)
+
 A resilient, production-grade payment orchestrator simulation designed specifically for free-tier deployments. This system emulates real-world payment gateway behaviors (success scenarios, timeouts, hard failures, and webhook dispatching) while strictly enforcing state transitions and idempotency.
 
 ## 🚀 Architecture Highlights

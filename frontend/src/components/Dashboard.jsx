@@ -31,7 +31,7 @@ const Dashboard = () => {
         <div className="space-y-8 animate-in fade-in duration-500">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
-                    <h1 className="text-3xl font-bold tracking-tight text-white flex items-center gap-2">
+                    <h1 className="text-3xl font-bold tracking-tight text-textMain flex items-center gap-2">
                         <Activity className="text-primary w-8 h-8" />
                         System Overview
                     </h1>
@@ -40,14 +40,14 @@ const Dashboard = () => {
                 <div className="flex gap-3 w-full sm:w-auto">
                     <button
                         onClick={fetchMetrics}
-                        className="p-2.5 rounded-xl border border-surface bg-surface hover:bg-surface/80 transition-colors text-textMuted hover:text-white"
+                        className="p-2.5 rounded-xl border border-borderLight bg-surface shadow-sm hover:bg-gray-50 transition-colors text-textMuted hover:text-textMain"
                         title="Refresh Metrics"
                     >
                         <RefreshCw className="w-5 h-5" />
                     </button>
                     <button
                         onClick={() => setIsModalOpen(true)}
-                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-primary hover:bg-blue-600 text-white px-5 py-2.5 rounded-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] font-medium"
+                        className="flex-1 sm:flex-none flex items-center justify-center gap-2 bg-primary hover:bg-primaryHover text-white px-5 py-2.5 rounded-xl transition-all shadow-stripe hover:shadow-stripe-hover font-medium"
                     >
                         <Plus className="w-5 h-5" />
                         New Payment
@@ -60,8 +60,8 @@ const Dashboard = () => {
             )}
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-3 bg-[#111111] border border-surface rounded-2xl p-6 shadow-2xl relative overflow-hidden group">
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="lg:col-span-3 bg-surface border border-borderLight rounded-2xl p-6 shadow-stripe relative overflow-hidden group">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                     <TransactionList key={metrics?.totalTransactions} />
                 </div>
             </div>

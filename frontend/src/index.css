@@ -1,25 +1,34 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.js";
 
 body {
   background-color: theme('colors.background');
   color: theme('colors.textMain');
   font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar for minimalist dark theme */
+/* Custom Scrollbar for minimalist light theme */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: theme('colors.background'); 
+  background: transparent; 
 }
 ::-webkit-scrollbar-thumb {
-  background: theme('colors.surface'); 
+  background: #cbd5e1; 
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: theme('colors.primary'); 
+  background: #94a3b8; 
+}
+
+/* Optional smooth mesh gradient for background */
+.bg-mesh {
+  background-image: 
+    radial-gradient(at 40% 20%, hsla(228,100%,74%,0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, hsla(189,100%,75%,0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, hsla(355,100%,93%,0.1) 0px, transparent 50%);
 }
