@@ -33,9 +33,9 @@ const Dashboard = () => {
                 <div>
                     <h1 className="text-3xl font-bold tracking-tight text-textMain flex items-center gap-2">
                         <Activity className="text-primary w-8 h-8" />
-                        System Overview
+                        NexusPay Console
                     </h1>
-                    <p className="text-textMuted mt-1">Real-time gateway simulation telemetry</p>
+                    <p className="text-textMuted mt-1">Real-time orchestration telemetry & transaction monitoring</p>
                 </div>
                 <div className="flex gap-3 w-full sm:w-auto">
                     <button

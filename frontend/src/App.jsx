@@ -9,13 +9,14 @@ function App() {
                 <nav className="border-b border-borderLight bg-white/70 backdrop-blur-xl sticky top-0 z-50">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div className="flex justify-between h-16 items-center">
-                            <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
-                                    <div className="w-4 h-4 bg-primary rounded-sm shadow-[0_2px_10px_rgba(99,102,241,0.4)]"></div>
+                            <div className="flex items-center gap-3">
+                                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-blue-500 flex items-center justify-center shadow-[0_2px_12px_rgba(99,102,241,0.45)]">
+                                    <span className="text-white font-black text-base tracking-tight">N</span>
                                 </div>
-                                <span className="font-bold text-xl tracking-tight text-textMain">
-                                    PayOrchestrator
-                                </span>
+                                <div className="flex items-center gap-2">
+                                    <span className="font-black text-xl tracking-tight text-textMain">NexusPay</span>
+                                    <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-primary/10 text-primary border border-primary/20">ORCHESTRATOR</span>
+                                </div>
                             </div>
                         </div>
                     </div>
